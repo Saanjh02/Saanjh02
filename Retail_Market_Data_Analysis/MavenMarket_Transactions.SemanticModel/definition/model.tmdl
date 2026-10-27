@@ -1,0 +1,42 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Transform File from MavenMarket_Transassctions'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transform File from MavenMarket_Transassctions\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Maven+Market+CSV+Files","Customers","Products","Stores","Calendar","Return_Data","Regions","Transaction_Data","Sample File","Parameter1","Transform Sample File","Transform File"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Customers
+ref table DateTableTemplate_eb4a6227-504b-44fe-be03-bdfe6ea59d13
+ref table LocalDateTable_18c6329c-50ec-4b45-bdf2-e662fbcfa5d1
+ref table LocalDateTable_39667004-7365-4c03-baba-3e07fcefd563
+ref table Products
+ref table Stores
+ref table LocalDateTable_3f129bb8-2333-42e8-8518-49a246503d5c
+ref table LocalDateTable_0b939621-b441-4b14-bb62-2c638babb845
+ref table Calendar
+ref table LocalDateTable_48f76236-4f75-47d1-856a-2c85eae22c04
+ref table LocalDateTable_7c40627f-53c3-4a14-8e41-803cef96e4d1
+ref table Return_Data
+ref table Regions
+ref table Transaction_Data
+ref table LocalDateTable_e27d7dcd-844f-42aa-8526-26ce2e6c4271
+ref table LocalDateTable_cfca3284-4edc-4c66-8e4c-2aeaa93b1f2e
+
+ref cultureInfo en-US
+

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "03417cee0d41a7082128",
+  "position": {
+    "x": 180.16806722689074,
+    "y": 306.55462184873949,
+    "z": 2000,
+    "height": 53.781512605042018,
+    "width": 775.79831932773106,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Hermanos",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": " has the highest number of transactions with ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": "2,796.",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

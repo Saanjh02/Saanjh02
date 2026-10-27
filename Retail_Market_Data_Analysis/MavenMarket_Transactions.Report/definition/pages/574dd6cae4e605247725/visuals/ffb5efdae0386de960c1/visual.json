@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "ffb5efdae0386de960c1",
+  "position": {
+    "x": 180.16806722689074,
+    "y": 196.30252100840335,
+    "z": 0,
+    "height": 64.537815126050418,
+    "width": 575.46218487394958,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Portland",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": " hits ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": "1,000 ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": "sales in ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": "December.",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

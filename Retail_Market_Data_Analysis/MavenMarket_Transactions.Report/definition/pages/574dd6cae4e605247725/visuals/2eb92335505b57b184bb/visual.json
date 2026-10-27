@@ -1,0 +1,81 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "2eb92335505b57b184bb",
+  "position": {
+    "x": 180.16806722689074,
+    "y": 426.21848739495795,
+    "z": 4000,
+    "height": 77.983193277310917,
+    "width": 843.02521008403357,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Current Month Returns are",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": " 256,",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": " which is ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": "4.48%",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": " above the goal of ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": "245.",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "20pt",
+                      "color": "#333333"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

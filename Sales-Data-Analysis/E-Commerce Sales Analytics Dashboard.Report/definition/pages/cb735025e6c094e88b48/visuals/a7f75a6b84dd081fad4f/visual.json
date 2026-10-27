@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "a7f75a6b84dd081fad4f",
+  "position": {
+    "x": 544.81331912146641,
+    "y": 259.49347705333952,
+    "z": 12000,
+    "height": 12.298269054660642,
+    "width": 612.4537989221,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "KEY INSIGHTS:"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Electronics is the highest revenue-generating category."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• West region contributes the maximum sales."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Revenue shows stable monthly trend with slight fluctuations."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Grocery and Toys are underperforming categories."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Top customers contribute a significant portion of total revenue."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

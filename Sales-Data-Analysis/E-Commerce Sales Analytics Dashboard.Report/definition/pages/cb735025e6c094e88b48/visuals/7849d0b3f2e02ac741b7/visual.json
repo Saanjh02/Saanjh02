@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "7849d0b3f2e02ac741b7",
+  "position": {
+    "x": 616.14327963849814,
+    "y": 558.34141508159314,
+    "z": 7000,
+    "height": 135.28095960126706,
+    "width": 158.64767080512226,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ecommerce_sales"
+                    }
+                  },
+                  "Property": "customer_gender"
+                }
+              },
+              "queryRef": "ecommerce_sales.customer_gender",
+              "nativeQueryRef": "customer_gender",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Basic'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

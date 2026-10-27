@@ -1,0 +1,56 @@
+expression Maven+Market+CSV+Files =
+		let
+		    Source = File.Contents("C:\Users\Deepak Sharma\Documents\Sunita\sql\Maven+Market+CSV+Files.zip")
+		in
+		    Source
+	lineageTag: 52390eb5-810f-47fb-a259-ac7d6b4db75e
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression Parameter1 = #"Sample File" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: dc5d4c4f-78cc-48fa-bdfa-ca4b4a548a67
+	queryGroup: 'Transform File from MavenMarket_Transassctions\Helper Queries'
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression 'Sample File' =
+		let
+		    Source = Folder.Files("C:\Users\Deepak Sharma\Documents\MavenMarket_Transassctions"),
+		    Navigation1 = Source{0}[Content]
+		in
+		    Navigation1
+	lineageTag: b78211e8-8bf0-40d0-b0e1-108a560d2dbd
+	queryGroup: 'Transform File from MavenMarket_Transassctions\Helper Queries'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File' =
+		let
+		    Source = Csv.Document(Parameter1,[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+	lineageTag: a916ac10-43e4-48cf-bc6b-a83eb21b73c2
+	queryGroup: 'Transform File from MavenMarket_Transassctions'
+
+	annotation PBI_ResultType = Table
+
+expression 'Transform File' =
+		let
+		    Source = (Parameter1 as binary) => let
+		    Source = Csv.Document(Parameter1,[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+		in
+		    Source
+	mAttributes: [ FunctionQueryBinding = "{""exemplarFormulaName"":""Transform Sample File""}" ]
+	lineageTag: 06cd503f-9873-4e92-a04b-f2ae6b0087f6
+	queryGroup: 'Transform File from MavenMarket_Transassctions\Helper Queries'
+
+	annotation PBI_ResultType = Function
+

@@ -1,0 +1,138 @@
+table Products
+	excludeFromModelRefresh
+	lineageTag: ce4b63c0-f5ad-4967-a388-4e614a3892c4
+
+	measure 'Unique Products' =
+			
+			DISTINCTCOUNT(Products[product_name])
+		formatString: 0
+		lineageTag: 474146db-1fbd-4619-8246-d3c9df819610
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e6dab68a-b207-4832-bfea-e50a927d880b
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_brand
+		dataType: string
+		lineageTag: 94c217bf-0d61-494d-9938-b19506efe2ce
+		summarizeBy: none
+		sourceColumn: Product_brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 9096192e-0f5b-41ca-b407-cd466c85542a
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_sku
+		dataType: string
+		lineageTag: 978473fc-b34e-4e62-ba7a-ce2ef51c5934
+		summarizeBy: none
+		sourceColumn: product_sku
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_retail_price
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 9217e62a-9b7b-483e-b390-b065f2dbb086
+		summarizeBy: sum
+		sourceColumn: product_retail_price
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_cost
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 92dbace5-4509-474c-b192-5a797d599892
+		summarizeBy: sum
+		sourceColumn: product_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_weight
+		dataType: double
+		lineageTag: 606421b3-44cb-499c-b205-19e9080353aa
+		summarizeBy: sum
+		sourceColumn: product_weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column recyclable
+		dataType: double
+		lineageTag: 83647577-0961-428b-b940-ed2f1fa4c11c
+		summarizeBy: sum
+		sourceColumn: recyclable
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column low_fat
+		dataType: double
+		lineageTag: c5b757b8-e101-4f04-8a4a-7b6d7df222de
+		summarizeBy: sum
+		sourceColumn: low_fat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_price
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 720dce40-3840-495b-b2d6-f1edc4421a33
+		summarizeBy: sum
+		sourceColumn: discount_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Price_Tier =
+			
+			IF(
+			    'Products'[product_retail_price] > 3,
+			    "High",
+			    IF(
+			        'Products'[product_retail_price] > 1,
+			        "Mid",
+			        "Low"
+			    )
+			)
+		lineageTag: 3c7b52d2-69b7-450d-aa40-1f258ba418b4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Products = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Deepak Sharma\Documents\Sunita\sql\MavenMarket_Products.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"product_id", Int64.Type}, {"product_brand", type text}, {"product_name", type text}, {"product_sku", type text}, {"product_retail_price", type number}, {"product_cost", type number}, {"product_weight", type number}, {"recyclable", Int64.Type}, {"low_fat", Int64.Type}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "discount_price", each [product_retail_price] * 0.9),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"discount_price", Currency.Type}}),
+				    #"Rounded Off" = Table.TransformColumns(#"Changed Type1",{{"discount_price", each Number.Round(_, 2), Currency.Type}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Rounded Off",null,0,Replacer.ReplaceValue,{"recyclable"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,0,Replacer.ReplaceValue,{"low_fat"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Replaced Value1",{{"product_brand", "Product_brand"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

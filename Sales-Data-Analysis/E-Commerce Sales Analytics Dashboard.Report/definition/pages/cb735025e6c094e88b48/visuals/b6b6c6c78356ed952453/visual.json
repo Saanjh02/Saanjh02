@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "b6b6c6c78356ed952453",
+  "position": {
+    "x": 534.97470387773785,
+    "y": 19.677230487457024,
+    "z": 13000,
+    "height": 83.628229571692358,
+    "width": 715.75925898124933,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "KEY INSIGHTS:",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Electronics is the highest revenue-generating category. • West region contributes the maximum sale"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ".• Revenue shows stable monthly trend with slight fluctuations.• Grocery and Toys are underperforming categories."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "• Top customers contribute a significant portion of total revenue."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "26D"
+                }
+              }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Normal'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

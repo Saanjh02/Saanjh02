@@ -1,0 +1,214 @@
+table Transaction_Data
+	lineageTag: 4fd5d7cc-4437-45f4-aa7d-fa741e3a77b2
+
+	measure 'Quantity Sold' = SUM(Transaction_Data[quantity])
+		formatString: 0
+		lineageTag: 6f74a457-77cb-435f-97bf-86e378df2732
+
+	measure 'Total Transactions' = COUNTROWS(Transaction_Data)
+		formatString: #,0
+		lineageTag: 1ae55071-dfdf-42fd-8155-d44a43be51b2
+
+	measure 'Return Rate' = DIVIDE([Quantity Returned], [Quantity Sold])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 628d7f3b-80d5-4ee1-98de-a8ebc2518d9c
+
+	measure 'Weekend Transactions' =
+			
+			CALCULATE(
+			    [Total Transactions],
+			    Calendar[Weekend] = "Y"
+			)
+		formatString: 0
+		lineageTag: a4d9160e-0855-4ee7-b7b7-7fd58715431e
+
+	measure '% Weekend Transactions' =
+			
+			DIVIDE([Weekend Transactions], [Total Transactions])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0becdd31-40e0-49eb-b569-32715876ff49
+
+	measure 'All Transactions' =
+			
+			CALCULATE(
+			    [Total Transactions],
+			    REMOVEFILTERS()
+			)
+		formatString: 0
+		lineageTag: a189b059-4f80-4ecf-a7ab-affbfb141442
+
+	measure 'Total Revenue' =
+			
+			SUMX(
+			    Transaction_Data,
+			    Transaction_Data[quantity] *
+			    RELATED(Products[product_retail_price])
+			)
+		lineageTag: 80ad2ec8-3529-4600-a897-e80784deea8a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Cost' =
+			
+			SUMX(
+			    Transaction_Data,
+			    Transaction_Data[quantity] *
+			    RELATED(Products[product_cost])
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: bdd38fa4-93d1-4d11-bdfe-a8e44e8cb260
+
+	measure 'Total Profit' = [Total Revenue] - [Total Cost]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: fce3f530-a8c9-40f1-afa5-47cb15e64dc0
+
+	measure 'Profit Margin' =
+			
+			DIVIDE([Total Profit], [Total Revenue])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: bf094693-73b6-44bb-a4a0-b6ace24b61d6
+
+	measure 'YTD Revenue' =
+			
+			TOTALYTD(
+			    [Total Revenue],
+			    Calendar[date]
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 1992e423-387d-4b49-8850-a5a6281348cf
+
+	measure '60-Day Revenue' =
+			
+			CALCULATE(
+			    [Total Revenue],
+			    DATESINPERIOD(
+			        Calendar[date],
+			        MAX(Calendar[date]),
+			        -60,
+			        DAY
+			    )
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 48062c76-520b-4b35-b92f-99972c71fd59
+
+	measure 'Last Month Transactions' =
+			
+			CALCULATE(
+			    [Total Transactions],
+			    DATEADD(Calendar[date], -1, MONTH)
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a3bde85b-6113-4c4a-9457-c353a22e3287
+
+	measure 'Last Month Revenue' =
+			
+			CALCULATE(
+			    [Total Revenue],
+			    DATEADD(Calendar[date], -1, MONTH)
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 2987f031-d947-4eb1-989e-bd47a5d6f84f
+
+	measure 'Last Month Profit' =
+			
+			CALCULATE(
+			    [Total Profit],
+			    DATEADD(Calendar[date], -1, MONTH)
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: e0e44ced-165c-49c7-95b0-4c3ed368bb12
+
+	measure 'Revenue Target' = [Last Month Revenue] * 1.05
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: fc20b301-df4e-489c-8637-fa86871f4c94
+
+	column transaction_date
+		dataType: dateTime
+		formatString: m/d/yyyy
+		lineageTag: 860b84f4-ded7-4480-a960-7056d2fb406e
+		summarizeBy: none
+		sourceColumn: transaction_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column stock_date
+		dataType: dateTime
+		formatString: m/d/yyyy
+		lineageTag: 2f895b1d-cdbf-401f-851f-ea0805dde19b
+		summarizeBy: none
+		sourceColumn: stock_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column product_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2db839e4-b98d-4bee-a84c-03d6db4976da
+		summarizeBy: none
+		sourceColumn: product_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 130ec599-52e4-4c21-8bd8-6997dc8bd345
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e0b71908-b6f9-40d4-b6d5-5750cf95c49d
+		summarizeBy: none
+		sourceColumn: store_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: f7d1b2c9-7ef9-4a38-bdf3-e09353da952b
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Transaction_Data = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\Deepak Sharma\Documents\MavenMarket_Transassctions"),
+				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"transaction_date", type date}, {"stock_date", type date}, {"product_id", Int64.Type}, {"customer_id", Int64.Type}, {"store_id", Int64.Type}, {"quantity", Int64.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Source.Name"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

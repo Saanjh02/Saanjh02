@@ -1,0 +1,193 @@
+table ecommerce_sales
+	lineageTag: cebcd1f6-db72-42f7-bb62-c5e96d047283
+
+	measure 'Total Revenue' = SUM(ecommerce_sales[total_amount])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 844dbf25-915f-4540-b55a-ee259f1d872c
+
+	measure 'Total Orders' = COUNT(ecommerce_sales[order_id])
+		formatString: 0
+		lineageTag: 3b0c3eba-e9c6-4d55-b2d4-a1c0fe69127f
+
+	measure 'Total Customers' = DISTINCTCOUNT(ecommerce_sales[customer_id])
+		formatString: 0
+		lineageTag: b7882561-1a46-4132-9dbc-454c779c9a4c
+
+	measure 'Average Order Value' =
+			
+			DIVIDE(
+			    [Total Revenue],
+			    [Total Orders]
+			)
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: b3b3b46c-5b90-404d-9569-28dbf2b475a3
+
+	column order_id
+		dataType: string
+		lineageTag: d8803a2f-5e0c-4835-aa9c-fc77465fef4d
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 08b972ae-e79a-4af1-a301-818097f5a398
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 7d4832b6-6d0f-4eeb-882f-e0c1f784b30a
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 33fcabd8-fb33-4960-ac4d-2655417df149
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		lineageTag: c2214879-0196-4e03-99d5-d4ab70cd3d26
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount
+		dataType: double
+		lineageTag: e518a555-0799-4950-9b73-b5cafc467e53
+		summarizeBy: sum
+		sourceColumn: discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: d1191c99-4bad-4bbd-974b-8072ae9ccab0
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_method
+		dataType: string
+		lineageTag: d684fd28-8cdf-4b07-be60-1b4879d918b4
+		summarizeBy: none
+		sourceColumn: payment_method
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7c7a3a40-7b94-4480-81fb-ddd2ec1d3874
+		summarizeBy: none
+		sourceColumn: order_date
+
+		variation Variation
+			isDefault
+			relationship: 4076d12f-1f4b-4169-bdaf-971d28f78bad
+			defaultHierarchy: LocalDateTable_84414297-2b0e-434d-accc-c3afc1d39e83.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column delivery_time_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f1adb99-178d-4952-8a54-283c1406aeb9
+		summarizeBy: sum
+		sourceColumn: delivery_time_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 71f146c3-c7ff-442c-b49a-0292f5297a80
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column returned
+		dataType: string
+		lineageTag: 612610d2-0371-48b1-887e-791b36e7f5b2
+		summarizeBy: none
+		sourceColumn: returned
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_amount
+		dataType: double
+		lineageTag: d4da0a00-b070-4b2e-8023-5baaf6be6b72
+		summarizeBy: sum
+		sourceColumn: total_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column shipping_cost
+		dataType: double
+		lineageTag: 71e1ed3d-8142-4ef0-adca-a66ca2055f01
+		summarizeBy: sum
+		sourceColumn: shipping_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column profit_margin
+		dataType: double
+		lineageTag: 9dbfaeab-2fe5-4504-85a9-b0b7941e1f38
+		summarizeBy: sum
+		sourceColumn: profit_margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column customer_age
+		dataType: int64
+		formatString: 0
+		lineageTag: 46b04a29-78f2-4778-b7aa-775bc44cb81d
+		summarizeBy: sum
+		sourceColumn: customer_age
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_gender
+		dataType: string
+		lineageTag: 691c7282-97ea-48cd-947d-179f7305406d
+		summarizeBy: none
+		sourceColumn: customer_gender
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ecommerce_sales = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-TD9TUB3\SQLSERVER2022"),
+				    #"E-commerce Sales Transactions" = Source{[Name="E-commerce Sales Transactions"]}[Data],
+				    dbo_ecommerce_sales = #"E-commerce Sales Transactions"{[Schema="dbo",Item="ecommerce_sales"]}[Data]
+				in
+				    dbo_ecommerce_sales
+
+	annotation PBI_ResultType = Table
+

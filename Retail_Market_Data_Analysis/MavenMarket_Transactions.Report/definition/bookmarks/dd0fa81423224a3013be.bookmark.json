@@ -1,0 +1,1017 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Hermonas Top Transactions",
+  "name": "dd0fa81423224a3013be",
+  "options": {
+    "targetVisualNames": [
+      "a3bed0ad321976804c54"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "0957ea2294657441e8b4",
+    "filters": {
+      "byExpr": [
+        {
+          "name": "8944f56ce6d240d58215",
+          "type": "Categorical",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "c",
+                "Entity": "Calendar",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "In": {
+                    "Expressions": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "c"
+                            }
+                          },
+                          "Property": "Year"
+                        }
+                      }
+                    ],
+                    "Values": [
+                      [
+                        {
+                          "Literal": {
+                            "Value": "1998L"
+                          }
+                        }
+                      ]
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "Calendar"
+                }
+              },
+              "Property": "Year"
+            }
+          },
+          "howCreated": 1
+        }
+      ]
+    },
+    "sections": {
+      "0957ea2294657441e8b4": {
+        "visualContainers": {
+          "9a670860083ec3e31935": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "a3bed0ad321976804c54": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4e38da80387791249a14",
+                  "type": "TopN",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "subquery",
+                        "Expression": {
+                          "Subquery": {
+                            "Query": {
+                              "Version": 2,
+                              "From": [
+                                {
+                                  "Name": "p",
+                                  "Entity": "Products",
+                                  "Type": 0
+                                },
+                                {
+                                  "Name": "t",
+                                  "Entity": "Transaction_Data",
+                                  "Type": 0
+                                }
+                              ],
+                              "Select": [
+                                {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "p"
+                                      }
+                                    },
+                                    "Property": "Product_brand"
+                                  },
+                                  "Name": "field"
+                                }
+                              ],
+                              "OrderBy": [
+                                {
+                                  "Direction": 2,
+                                  "Expression": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": "t"
+                                        }
+                                      },
+                                      "Property": "Total Transactions"
+                                    }
+                                  }
+                                }
+                              ],
+                              "Top": 30
+                            }
+                          }
+                        },
+                        "Type": 2
+                      },
+                      {
+                        "Name": "p",
+                        "Entity": "Products",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "p"
+                                    }
+                                  },
+                                  "Property": "Product_brand"
+                                }
+                              }
+                            ],
+                            "Table": {
+                              "SourceRef": {
+                                "Source": "subquery"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Products"
+                        }
+                      },
+                      "Property": "Product_brand"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6accc701c96a050bde70",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Total Transactions"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6dd9cce707672d100b1b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Total Profit"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c20a82743d07706d316d",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Profit Margin"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9438e6eccee052739552",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Return Rate"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Total Transactions"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Rows": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Products"
+                        }
+                      },
+                      "Property": "Product_brand"
+                    }
+                  }
+                ]
+              },
+              "expansionStates": [
+                {
+                  "roles": [
+                    "Rows"
+                  ],
+                  "levels": [
+                    {
+                      "queryRefs": [
+                        "Products.product_brand"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "Products"
+                              }
+                            },
+                            "Property": "Product_brand"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    }
+                  ],
+                  "root": {
+                    "identityValues": null
+                  }
+                }
+              ]
+            },
+            "highlight": {
+              "selection": [
+                {
+                  "dataMap": {
+                    "Products.product_brand": [
+                      {
+                        "scopeId": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "Products"
+                                  }
+                                },
+                                "Property": "Product_brand"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'Hermanos'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "metadata": [
+                    "Products.product_brand"
+                  ]
+                }
+              ],
+              "filterExpressionMetadata": {
+                "expressions": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Products"
+                        }
+                      },
+                      "Property": "Product_brand"
+                    }
+                  }
+                ],
+                "cachedValueItems": [
+                  {
+                    "identities": [
+                      {
+                        "scopeId": {
+                          "Comparison": {
+                            "ComparisonKind": 0,
+                            "Left": {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "Products"
+                                  }
+                                },
+                                "Property": "Product_brand"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "'Hermanos'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "valueMap": {
+                      "0": "Hermanos"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "0043995159e770484ce0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "1929e79c447e82699c54",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Total Transactions"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ad0e683b91387e92dac1",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Calendar"
+                        }
+                      },
+                      "Property": "Start of Month"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8ce3552f0485338912b3",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Last Month Transactions"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "kpi",
+              "objects": {}
+            }
+          },
+          "c4ba737fd24622aedbba": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c44f89f384597a817abd",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Calendar"
+                        }
+                      },
+                      "Property": "Start of Month"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c06f7fc9de10a3606b1b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Total Profit"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7413b63b55a304044e59",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Last Month Profit"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "kpi",
+              "objects": {}
+            }
+          },
+          "6dc8905007c851e06a32": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8eab5be84159dc42c9ee",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Return_Data"
+                        }
+                      },
+                      "Property": "Total Returns"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "5bc881703a7921b0240d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Calendar"
+                        }
+                      },
+                      "Property": "Start of Month"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f352e4c7d20ac23587cb",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Return_Data"
+                        }
+                      },
+                      "Property": "Last Month Returns"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "kpi",
+              "objects": {}
+            }
+          },
+          "429a0a30b0e2003ee4b0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "267088b102aa89d90500",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Stores"
+                        }
+                      },
+                      "Property": "store_city"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b48312a510a1a8269116",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Total Transactions"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "map",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Stores"
+                        }
+                      },
+                      "Property": "store_city"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "da70d1e7e755b96a6bbe": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "38eb7bf3908306c3d00c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Stores"
+                        }
+                      },
+                      "Property": "store_country"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        },
+                        "isInvertedSelectionMode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Stores"
+                        }
+                      },
+                      "Property": "store_country"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "a8a5098b40d3caa67512": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5a8e7dc9320779e8c040",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Stores"
+                        }
+                      },
+                      "Property": "store_country"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4a0d2c3b944856800e36",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Stores"
+                        }
+                      },
+                      "Property": "store_state"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2e1cee6b43d8e3d6822e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Stores"
+                        }
+                      },
+                      "Property": "store_city"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b253ee50d0dbc34d947b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Total Transactions"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "treemap",
+              "objects": {},
+              "activeProjections": {
+                "Group": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Stores"
+                        }
+                      },
+                      "Property": "store_country"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "22220a241673a60d44c9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3cda8d837c9ae8436a73",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Total Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3f0f4543465d0c828299",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Calendar"
+                        }
+                      },
+                      "Property": "Start Of Week"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Calendar"
+                        }
+                      },
+                      "Property": "Start Of Week"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Calendar"
+                        }
+                      },
+                      "Property": "Start Of Week"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "3f90cab08a3a9344109d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "599238568c55230202e0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Total Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a704fea5558c1b586568",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Revenue Target"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4af504bc0505680438ed",
+                  "type": "TopN",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "subquery",
+                        "Expression": {
+                          "Subquery": {
+                            "Query": {
+                              "Version": 2,
+                              "From": [
+                                {
+                                  "Name": "c",
+                                  "Entity": "Calendar",
+                                  "Type": 0
+                                }
+                              ],
+                              "Select": [
+                                {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "c"
+                                      }
+                                    },
+                                    "Property": "Start of Month"
+                                  },
+                                  "Name": "field"
+                                }
+                              ],
+                              "OrderBy": [
+                                {
+                                  "Direction": 2,
+                                  "Expression": {
+                                    "Aggregation": {
+                                      "Expression": {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "c"
+                                            }
+                                          },
+                                          "Property": "Start of Month"
+                                        }
+                                      },
+                                      "Function": 3
+                                    }
+                                  }
+                                }
+                              ],
+                              "Top": 1
+                            }
+                          }
+                        },
+                        "Type": 2
+                      },
+                      {
+                        "Name": "c",
+                        "Entity": "Calendar",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "c"
+                                    }
+                                  },
+                                  "Property": "Start of Month"
+                                }
+                              }
+                            ],
+                            "Table": {
+                              "SourceRef": {
+                                "Source": "subquery"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Calendar"
+                        }
+                      },
+                      "Property": "Start of Month"
+                    }
+                  },
+                  "howCreated": 1
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "gauge",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Transaction_Data"
+                        }
+                      },
+                      "Property": "Total Revenue"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

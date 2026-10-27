@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "0957ea2294657441e8b4",
+  "displayName": "Topline Performance",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "a3bed0ad321976804c54",
+      "target": "a8a5098b40d3caa67512",
+      "type": "NoFilter"
+    }
+  ]
+}

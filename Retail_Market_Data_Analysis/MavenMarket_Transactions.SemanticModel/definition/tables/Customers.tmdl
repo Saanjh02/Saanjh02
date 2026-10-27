@@ -1,0 +1,258 @@
+table Customers
+	excludeFromModelRefresh
+	lineageTag: 17888294-8ed1-4534-9350-0eaac31048a3
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b7f8b2fc-e824-4e69-87f3-6770a48c6008
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_acct_num
+		dataType: string
+		lineageTag: e48b0573-31a8-45cf-998c-69e9cb3f0cdb
+		summarizeBy: none
+		sourceColumn: customer_acct_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_name
+		dataType: string
+		lineageTag: 088d1cc6-3c5a-44c2-ac25-960ca6b7fc99
+		summarizeBy: none
+		sourceColumn: first_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_name
+		dataType: string
+		lineageTag: 3dba94da-f2c9-4349-9b73-41c8ac974975
+		summarizeBy: none
+		sourceColumn: last_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_address
+		dataType: string
+		lineageTag: 021964a8-bf02-4ae2-968b-c83487c7e8a6
+		summarizeBy: none
+		sourceColumn: customer_address
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_city
+		dataType: string
+		lineageTag: 9400a921-6eea-4ec6-b06f-5706d32aff4a
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: customer_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_state_province
+		dataType: string
+		lineageTag: 1e6c977d-cb05-4674-a1b9-19350b166bb8
+		summarizeBy: none
+		sourceColumn: customer_state_province
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_postal_code
+		dataType: string
+		lineageTag: f19bd209-3a80-4a93-8ef2-1a11d2688fd8
+		dataCategory: PostalCode
+		summarizeBy: none
+		sourceColumn: customer_postal_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_country
+		dataType: string
+		lineageTag: 38575237-5b30-421c-952b-9f8ef9f0a400
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: customer_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column birthdate
+		dataType: dateTime
+		formatString: m/d/yyyy
+		lineageTag: 48e8852e-8086-490f-96d4-4976e3a5d10e
+		summarizeBy: none
+		sourceColumn: birthdate
+
+		variation Variation
+			isDefault
+			relationship: dce45a7a-0b63-467f-97f1-678aba277689
+			defaultHierarchy: LocalDateTable_18c6329c-50ec-4b45-bdf2-e662fbcfa5d1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column marital_status
+		dataType: string
+		lineageTag: 4594058a-4f55-43b0-945d-0eaab5ffd538
+		summarizeBy: none
+		sourceColumn: marital_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column yearly_income
+		dataType: string
+		lineageTag: df544e06-f148-4fe0-83f9-ced2baf184a8
+		summarizeBy: none
+		sourceColumn: yearly_income
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: f6bb67c8-6f5b-4b62-8af2-4482ebcdd675
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_children
+		dataType: int64
+		formatString: 0
+		lineageTag: d1769391-634a-4060-8af1-45941ae6b28e
+		summarizeBy: sum
+		sourceColumn: total_children
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_children_at_home
+		dataType: int64
+		formatString: 0
+		lineageTag: c0d0a339-0cf1-40cd-8b56-6e2d21bff78d
+		summarizeBy: sum
+		sourceColumn: num_children_at_home
+
+		annotation SummarizationSetBy = Automatic
+
+	column education
+		dataType: string
+		lineageTag: e1c1bd4b-aba3-43d9-b871-35959f77aeaf
+		summarizeBy: none
+		sourceColumn: education
+
+		annotation SummarizationSetBy = Automatic
+
+	column acct_open_date
+		dataType: dateTime
+		formatString: m/d/yyyy
+		lineageTag: b5ccb274-1ca0-43f5-bdab-c62a91f66679
+		summarizeBy: none
+		sourceColumn: acct_open_date
+
+		variation Variation
+			isDefault
+			relationship: f14042aa-e16c-4ef4-b34d-0c119a2b7f9f
+			defaultHierarchy: LocalDateTable_39667004-7365-4c03-baba-3e07fcefd563.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column member_card
+		dataType: string
+		lineageTag: b45bc919-3fa9-41c9-a2a6-5850b8e51ca9
+		summarizeBy: none
+		sourceColumn: member_card
+
+		annotation SummarizationSetBy = Automatic
+
+	column occupation
+		dataType: string
+		lineageTag: e9c39df1-b9be-48bb-bdb1-7a7ddb417d60
+		summarizeBy: none
+		sourceColumn: occupation
+
+		annotation SummarizationSetBy = Automatic
+
+	column homeowner
+		dataType: string
+		lineageTag: cffd5845-8ab0-4ffd-a342-4f7738cc92ee
+		summarizeBy: none
+		sourceColumn: homeowner
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_name
+		dataType: string
+		lineageTag: dfbf158d-f630-461a-bfd1-6eeca693d09c
+		summarizeBy: none
+		sourceColumn: full_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column birth_year
+		dataType: string
+		lineageTag: 04d3871c-2d3d-4b97-91e0-96cf627a209a
+		summarizeBy: none
+		sourceColumn: birth_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_children
+		dataType: string
+		lineageTag: e15ee48f-b3d3-4c28-b2c4-3774dc98808f
+		summarizeBy: none
+		sourceColumn: has_children
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Age' = DATEDIFF(Customers[birthdate], TODAY(), YEAR)
+		formatString: 0
+		lineageTag: 43879936-c32f-4ab9-ad2b-a3486c657aa4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Priority = IF(Customers[homeowner] = "Y" && Customers[member_card] = "Golden", "High", "Standard")
+		lineageTag: b3382983-a8a9-4571-96ce-dde284ff8af7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Short_Country = UPPER(LEFT(Customers[customer_country], 3))
+		lineageTag: 5e5e1cf5-cbe5-4b34-bacb-e12225cff537
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'House Number' = LEFT(Customers[customer_address], SEARCH(" ", Customers[customer_address]) - 1)
+		lineageTag: 56516277-1a21-4562-94c8-bed25774f3cf
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Deepak Sharma\Documents\Sunita\sql\MavenMarket_Customers.csv"),[Delimiter=",", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_id", Int64.Type}, {"customer_acct_num", type text}, {"first_name", type text}, {"last_name", type text}, {"customer_address", type text}, {"customer_city", type text}, {"customer_state_province", type text}, {"customer_postal_code", type text}, {"customer_country", type text}, {"birthdate", type date}, {"marital_status", type text}, {"yearly_income", type text}, {"gender", type text}, {"total_children", Int64.Type}, {"num_children_at_home", Int64.Type}, {"education", type text}, {"acct_open_date", type date}, {"member_card", type text}, {"occupation", type text}, {"homeowner", type text}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "full_name", each [first_name] & " " & [last_name]),
+				    #"Inserted Year" = Table.AddColumn(#"Added Custom", "Year", each Date.Year([birthdate]), Int64.Type),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Year",{{"Year", "birth_year"}}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Renamed Columns", "has_children", each if [total_children] = 0 then "N" else "Y"),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Conditional Column",{{"birth_year", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

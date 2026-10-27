@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "E-Commerce Sales Analytics Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "31e2c973-8af7-443b-82da-e37ab667d223"
+  }
+}
