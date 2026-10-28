@@ -4,6 +4,7 @@ table Stores
 
 	column store_id
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 40480243-4ff1-42d4-ba55-f43764533c66
 		summarizeBy: none
@@ -89,11 +90,6 @@ table Stores
 		summarizeBy: none
 		sourceColumn: first_opened_date
 
-		variation Variation
-			isDefault
-			relationship: 5ec1fa1a-59cd-4773-a883-6bb73b99d9e3
-			defaultHierarchy: LocalDateTable_3f129bb8-2333-42e8-8518-49a246503d5c.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -105,11 +101,6 @@ table Stores
 		summarizeBy: none
 		sourceColumn: last_remodel_date
 
-		variation Variation
-			isDefault
-			relationship: d2640aa4-14d8-493c-a463-4ae3847d2bf4
-			defaultHierarchy: LocalDateTable_0b939621-b441-4b14-bb62-2c638babb845.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -118,7 +109,7 @@ table Stores
 		dataType: int64
 		formatString: 0
 		lineageTag: d90c7d1b-ed4d-4f40-bc9f-7e85d166f574
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: total_sqft
 
 		annotation SummarizationSetBy = Automatic
@@ -127,7 +118,7 @@ table Stores
 		dataType: int64
 		formatString: 0
 		lineageTag: 0762fd83-8c7a-41ec-acd4-921a6d841310
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: grocery_sqft
 
 		annotation SummarizationSetBy = Automatic
@@ -158,9 +149,23 @@ table Stores
 			)
 		formatString: 0
 		lineageTag: ab175abf-66c1-4331-97ae-b26e79063e24
-		summarizeBy: sum
+		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
+
+	column Latitude = SWITCH(Stores[store_id], 1, 16.8531, 2, 48.7519, 3, 47.5673, 4, 24.4, 5, 20.6597, 6, 34.0736, 7, 34.0522, 8, 20.9674, 9, 19.4326, 10, 18.85, 11, 45.5152, 12, 22.4, 13, 44.9429, 14, 37.7749, 15, 47.6062, 16, 47.6588, 17, 47.2529, 18, 22.4, 19, 49.2827, 20, 48.4284, 21, 19.3, 22, 46.0646, 23, 46.6021, 24, 32.7157, BLANK())
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 8360fdc3-cac7-4524-9cdc-7b6955781873
+		dataCategory: Latitude
+		summarizeBy: none
+
+	column Longitude = SWITCH(Stores[store_id], 1, -99.8237, 2, -122.4787, 3, -122.6326, 4, -102.3, 5, -103.3496, 6, -118.4004, 7, -118.2437, 8, -89.5926, 9, -99.1332, 10, -97.1, 11, -122.6784, 12, -102.7, 13, -123.0351, 14, -122.4194, 15, -122.3321, 16, -117.426, 17, -122.4443, 18, -102.7, 19, -123.1207, 20, -123.3656, 21, -99.2, 22, -118.343, 23, -120.5059, 24, -117.1611, BLANK())
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 7842e77c-6d9d-402a-910e-f11be49b7980
+		dataCategory: Longitude
+		summarizeBy: none
 
 	partition Stores = m
 		mode: import

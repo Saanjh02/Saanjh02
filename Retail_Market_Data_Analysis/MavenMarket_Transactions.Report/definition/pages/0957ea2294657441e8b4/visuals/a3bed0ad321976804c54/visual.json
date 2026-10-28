@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "a3bed0ad321976804c54",
   "position": {
-    "x": 31.161048689138578,
-    "y": 174.9812734082397,
+    "x": 31.25,
+    "y": 175,
     "z": 1000,
-    "height": 514.15730337078651,
-    "width": 503.37078651685397,
+    "height": 513.75,
+    "width": 465,
     "tabOrder": 1000
   },
   "visual": {
@@ -23,11 +23,11 @@
                       "Entity": "Products"
                     }
                   },
-                  "Property": "Product_brand"
+                  "Property": "Brand"
                 }
               },
               "queryRef": "Products.product_brand",
-              "nativeQueryRef": "Product_brand",
+              "nativeQueryRef": "Brand",
               "active": true
             }
           ]
@@ -130,7 +130,7 @@
                       "Entity": "Products"
                     }
                   },
-                  "Property": "Product_brand"
+                  "Property": "Brand"
                 }
               }
             ],
@@ -147,7 +147,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "94.83801109662795D"
+                  "Value": "83.56873397753256D"
                 }
               }
             }
@@ -161,7 +161,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "124.95555555555555D"
+                  "Value": "109.94955530780634D"
                 }
               }
             }
@@ -175,7 +175,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "85.58684614476326D"
+                  "Value": "91.75851762778791D"
                 }
               }
             }
@@ -189,7 +189,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "88.77777777777777D"
+                  "Value": "86.27144141599793D"
                 }
               }
             }
@@ -213,6 +213,20 @@
               "expr": {
                 "Literal": {
                   "Value": "'Center'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "autoExpand": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -476,6 +490,51 @@
             }
           }
         }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "Column"
+          }
+        }
+      ],
+      "columnTotal": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -512,6 +571,19 @@
             }
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -528,7 +600,7 @@
                 "Entity": "Products"
               }
             },
-            "Property": "Product_brand"
+            "Property": "Brand"
           }
         },
         "type": "TopN",
@@ -561,7 +633,7 @@
                               "Source": "p"
                             }
                           },
-                          "Property": "Product_brand"
+                          "Property": "Brand"
                         },
                         "Name": "field"
                       }
@@ -605,7 +677,7 @@
                             "Source": "p"
                           }
                         },
-                        "Property": "Product_brand"
+                        "Property": "Brand"
                       }
                     }
                   ],
@@ -618,7 +690,70 @@
               }
             }
           ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {}
+            }
+          ]
         }
+      },
+      {
+        "name": "9762b0636c5961e09579",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Transaction_Data"
+              }
+            },
+            "Property": "Total Transactions"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e39e4c320dcdb3080d59",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Transaction_Data"
+              }
+            },
+            "Property": "Total Profit"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cc0c200f5c75a2a41068",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Transaction_Data"
+              }
+            },
+            "Property": "Profit Margin"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f8b00bb82e6c0d1e1a55",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Transaction_Data"
+              }
+            },
+            "Property": "Return Rate"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

@@ -2,11 +2,13 @@ table Return_Data
 	lineageTag: 7d0c4d8b-8df5-4230-91ac-72409f8069f3
 
 	measure 'Quantity Returned' = SUM(Return_Data[quantity])
-		formatString: 0
+		formatString: #,0
+		displayFolder: Returns
 		lineageTag: 4975c7db-b638-41b3-aef1-79e10e8c6f71
 
 	measure 'Total Returns' = COUNTROWS(Return_Data)
-		formatString: 0
+		formatString: #,0
+		displayFolder: Returns
 		lineageTag: 8830684f-cf03-451b-9d59-95eb4d9e5829
 
 	measure 'All Returns' =
@@ -15,7 +17,8 @@ table Return_Data
 			    [Total Returns],
 			    REMOVEFILTERS()
 			)
-		formatString: 0
+		formatString: #,0
+		displayFolder: Returns
 		lineageTag: dcddc686-e3f8-475c-a0c2-c323bb7fb17f
 
 	measure 'Last Month Returns' =
@@ -25,7 +28,18 @@ table Return_Data
 			    DATEADD(Calendar[date], -1, MONTH)
 			)
 		formatString: #,0
+		displayFolder: Returns
 		lineageTag: e1ebe8fb-2849-41f8-bf27-12835bbda25d
+
+	/// Percent change in returns vs the previous month. Positive = more returns (worse).
+	measure 'Returns vs Last Month %' =
+			VAR CurMonth = MAX('Calendar'[Start of Month])
+			VAR Cur = CALCULATE([Total Returns], ALL('Calendar'), 'Calendar'[Start of Month] = CurMonth)
+			VAR Prev = CALCULATE([Total Returns], ALL('Calendar'), 'Calendar'[Start of Month] = EDATE(CurMonth, -1))
+			RETURN DIVIDE(Cur - Prev, Prev)
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Returns
+		lineageTag: a211c2cf-1310-4c2e-8e86-6da7a6c34a5a
 
 	column return_date
 		dataType: dateTime
@@ -68,7 +82,7 @@ table Return_Data
 		dataType: int64
 		formatString: 0
 		lineageTag: 9143beab-9b8a-478f-aa07-026ad48676dc
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: quantity
 
 		annotation SummarizationSetBy = Automatic

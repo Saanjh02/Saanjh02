@@ -2,15 +2,18 @@ table Transaction_Data
 	lineageTag: 4fd5d7cc-4437-45f4-aa7d-fa741e3a77b2
 
 	measure 'Quantity Sold' = SUM(Transaction_Data[quantity])
-		formatString: 0
+		formatString: #,0
+		displayFolder: Transactions
 		lineageTag: 6f74a457-77cb-435f-97bf-86e378df2732
 
 	measure 'Total Transactions' = COUNTROWS(Transaction_Data)
 		formatString: #,0
+		displayFolder: Transactions
 		lineageTag: 1ae55071-dfdf-42fd-8155-d44a43be51b2
 
 	measure 'Return Rate' = DIVIDE([Quantity Returned], [Quantity Sold])
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Returns
 		lineageTag: 628d7f3b-80d5-4ee1-98de-a8ebc2518d9c
 
 	measure 'Weekend Transactions' =
@@ -19,13 +22,15 @@ table Transaction_Data
 			    [Total Transactions],
 			    Calendar[Weekend] = "Y"
 			)
-		formatString: 0
+		formatString: #,0
+		displayFolder: Transactions
 		lineageTag: a4d9160e-0855-4ee7-b7b7-7fd58715431e
 
 	measure '% Weekend Transactions' =
 			
 			DIVIDE([Weekend Transactions], [Total Transactions])
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Transactions
 		lineageTag: 0becdd31-40e0-49eb-b569-32715876ff49
 
 	measure 'All Transactions' =
@@ -34,7 +39,8 @@ table Transaction_Data
 			    [Total Transactions],
 			    REMOVEFILTERS()
 			)
-		formatString: 0
+		formatString: #,0
+		displayFolder: Transactions
 		lineageTag: a189b059-4f80-4ecf-a7ab-affbfb141442
 
 	measure 'Total Revenue' =
@@ -44,6 +50,8 @@ table Transaction_Data
 			    Transaction_Data[quantity] *
 			    RELATED(Products[product_retail_price])
 			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Revenue & Profit
 		lineageTag: 80ad2ec8-3529-4600-a897-e80784deea8a
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -55,17 +63,20 @@ table Transaction_Data
 			    Transaction_Data[quantity] *
 			    RELATED(Products[product_cost])
 			)
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Revenue & Profit
 		lineageTag: bdd38fa4-93d1-4d11-bdfe-a8e44e8cb260
 
 	measure 'Total Profit' = [Total Revenue] - [Total Cost]
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Revenue & Profit
 		lineageTag: fce3f530-a8c9-40f1-afa5-47cb15e64dc0
 
 	measure 'Profit Margin' =
 			
 			DIVIDE([Total Profit], [Total Revenue])
 		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Revenue & Profit
 		lineageTag: bf094693-73b6-44bb-a4a0-b6ace24b61d6
 
 	measure 'YTD Revenue' =
@@ -74,7 +85,8 @@ table Transaction_Data
 			    [Total Revenue],
 			    Calendar[date]
 			)
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Time Intelligence
 		lineageTag: 1992e423-387d-4b49-8850-a5a6281348cf
 
 	measure '60-Day Revenue' =
@@ -88,7 +100,8 @@ table Transaction_Data
 			        DAY
 			    )
 			)
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Time Intelligence
 		lineageTag: 48062c76-520b-4b35-b92f-99972c71fd59
 
 	measure 'Last Month Transactions' =
@@ -97,7 +110,8 @@ table Transaction_Data
 			    [Total Transactions],
 			    DATEADD(Calendar[date], -1, MONTH)
 			)
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: #,0
+		displayFolder: Time Intelligence
 		lineageTag: a3bde85b-6113-4c4a-9457-c353a22e3287
 
 	measure 'Last Month Revenue' =
@@ -106,7 +120,8 @@ table Transaction_Data
 			    [Total Revenue],
 			    DATEADD(Calendar[date], -1, MONTH)
 			)
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Time Intelligence
 		lineageTag: 2987f031-d947-4eb1-989e-bd47a5d6f84f
 
 	measure 'Last Month Profit' =
@@ -115,11 +130,13 @@ table Transaction_Data
 			    [Total Profit],
 			    DATEADD(Calendar[date], -1, MONTH)
 			)
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Time Intelligence
 		lineageTag: e0e44ced-165c-49c7-95b0-4c3ed368bb12
 
 	measure 'Revenue Target' = [Last Month Revenue] * 1.05
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Revenue & Profit
 		lineageTag: fc20b301-df4e-489c-8637-fa86871f4c94
 
 	column transaction_date
@@ -188,7 +205,7 @@ table Transaction_Data
 		dataType: int64
 		formatString: 0
 		lineageTag: f7d1b2c9-7ef9-4a38-bdf3-e09353da952b
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: quantity
 
 		annotation SummarizationSetBy = Automatic

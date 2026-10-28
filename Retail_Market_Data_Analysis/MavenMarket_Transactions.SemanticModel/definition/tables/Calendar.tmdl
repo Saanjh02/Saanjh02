@@ -1,18 +1,15 @@
 table Calendar
 	excludeFromModelRefresh
 	lineageTag: e132f5de-6f36-44c8-8674-1f8f2ba0a95d
+	dataCategory: Time
 
 	column date
 		dataType: dateTime
+		isUnique
 		formatString: m/d/yyyy
 		lineageTag: 21dac8e0-b861-4a9b-8cb4-f29441a63d82
 		summarizeBy: none
 		sourceColumn: date
-
-		variation Variation
-			isDefault
-			relationship: 65569a0d-a179-4349-a7b1-7477badf8794
-			defaultHierarchy: LocalDateTable_48f76236-4f75-47d1-856a-2c85eae22c04.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -27,11 +24,6 @@ table Calendar
 		summarizeBy: none
 		sourceColumn: Start Of Week
 
-		variation Variation
-			isDefault
-			relationship: 2c0b120c-2e53-4a4f-84fe-d03da489adb5
-			defaultHierarchy: LocalDateTable_cfca3284-4edc-4c66-8e4c-2aeaa93b1f2e.'Date Hierarchy'
-
 		changedProperty = DataType
 
 		annotation SummarizationSetBy = Automatic
@@ -45,6 +37,7 @@ table Calendar
 		lineageTag: e855d7e5-13b8-4d3c-aaac-506565fd4845
 		summarizeBy: none
 		sourceColumn: Day Name
+		sortByColumn: 'Day Number'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -54,11 +47,6 @@ table Calendar
 		lineageTag: 72473706-ec78-40fa-b4d2-e674580dcd07
 		summarizeBy: none
 		sourceColumn: Start of Month
-
-		variation Variation
-			isDefault
-			relationship: 014661e5-374b-4d7e-b370-381604147743
-			defaultHierarchy: LocalDateTable_7c40627f-53c3-4a14-8e41-803cef96e4d1.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -71,6 +59,7 @@ table Calendar
 		lineageTag: 2ec655f0-3638-483f-87d8-c3da1cefd28f
 		summarizeBy: none
 		sourceColumn: Month Name
+		sortByColumn: 'Month Number'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -78,7 +67,7 @@ table Calendar
 		dataType: int64
 		formatString: 0
 		lineageTag: 94d45899-3ba6-487d-a518-682c0f0348e4
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Quarter
 
 		annotation SummarizationSetBy = Automatic
@@ -87,7 +76,7 @@ table Calendar
 		dataType: int64
 		formatString: 0
 		lineageTag: 2aaac51e-113c-40e9-866a-f3d3d2a8d83a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Year
 
 		annotation SummarizationSetBy = Automatic
@@ -112,12 +101,34 @@ table Calendar
 		lineageTag: 7b598019-90b4-4507-8b1a-9f90b8d9d923
 		summarizeBy: none
 
-		variation Variation
-			isDefault
-			relationship: 4adc3799-e112-46cd-a503-8f4a21b1f576
-			defaultHierarchy: LocalDateTable_e27d7dcd-844f-42aa-8526-26ce2e6c4271.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number' = MONTH('Calendar'[date])
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 58a93b2f-e894-4b77-8fc2-31692d51a34f
+		summarizeBy: none
+
+	column 'Day Number' = WEEKDAY('Calendar'[date], 1)
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d0225842-4e92-4f3c-8f4d-5c9a7ab84f0e
+		summarizeBy: none
+
+	column 'Month Year Sort' = YEAR('Calendar'[date]) * 100 + MONTH('Calendar'[date])
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b3f9780d-359b-4c92-8d0c-bc0461d37358
+		summarizeBy: none
+
+	column 'Month Year' = FORMAT('Calendar'[date], "mmm yyyy")
+		dataType: string
+		lineageTag: 4695e430-e2bc-48b8-b012-4e7366e480f8
+		summarizeBy: none
+		sortByColumn: 'Month Year Sort'
 
 	partition Calendar = m
 		mode: import

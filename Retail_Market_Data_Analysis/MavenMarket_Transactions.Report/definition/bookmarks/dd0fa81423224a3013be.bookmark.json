@@ -112,7 +112,7 @@
                                         "Source": "p"
                                       }
                                     },
-                                    "Property": "Product_brand"
+                                    "Property": "Brand"
                                   },
                                   "Name": "field"
                                 }
@@ -156,7 +156,7 @@
                                       "Source": "p"
                                     }
                                   },
-                                  "Property": "Product_brand"
+                                  "Property": "Brand"
                                 }
                               }
                             ],
@@ -177,7 +177,7 @@
                           "Entity": "Products"
                         }
                       },
-                      "Property": "Product_brand"
+                      "Property": "Brand"
                     }
                   },
                   "howCreated": 0
@@ -271,7 +271,7 @@
                           "Entity": "Products"
                         }
                       },
-                      "Property": "Product_brand"
+                      "Property": "Brand"
                     }
                   }
                 ]
@@ -324,7 +324,7 @@
                                     "Entity": "Products"
                                   }
                                 },
-                                "Property": "Product_brand"
+                                "Property": "Brand"
                               }
                             },
                             "Right": {
@@ -351,7 +351,7 @@
                           "Entity": "Products"
                         }
                       },
-                      "Property": "Product_brand"
+                      "Property": "Brand"
                     }
                   }
                 ],
@@ -369,7 +369,7 @@
                                     "Entity": "Products"
                                   }
                                 },
-                                "Property": "Product_brand"
+                                "Property": "Brand"
                               }
                             },
                             "Right": {

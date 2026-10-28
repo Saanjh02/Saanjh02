@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "6dc8905007c851e06a32",
   "position": {
-    "x": 982.7555555555557,
-    "y": 12.799999999999997,
+    "x": 819.58333333333326,
+    "y": 11.25,
     "z": 4000,
-    "height": 146.48888888888888,
-    "width": 277.33333333333331,
+    "height": 145,
+    "width": 206.25,
     "tabOrder": 4000
   },
   "visual": {
@@ -91,7 +91,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Current Month Returns'"
+                  "Value": "'Current Month Return Transactions'"
                 }
               }
             },
@@ -144,5 +144,51 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1cb3134a360d2ca77374",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Return_Data"
+              }
+            },
+            "Property": "Last Month Returns"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5f903fc01000a35a6099",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Return_Data"
+              }
+            },
+            "Property": "Total Returns"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ae5d01e5070a66221038",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar"
+              }
+            },
+            "Property": "Start of Month"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

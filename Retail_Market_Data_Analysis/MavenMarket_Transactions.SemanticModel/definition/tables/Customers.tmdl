@@ -4,6 +4,7 @@ table Customers
 
 	column customer_id
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: b7f8b2fc-e824-4e69-87f3-6770a48c6008
 		summarizeBy: none
@@ -85,11 +86,6 @@ table Customers
 		summarizeBy: none
 		sourceColumn: birthdate
 
-		variation Variation
-			isDefault
-			relationship: dce45a7a-0b63-467f-97f1-678aba277689
-			defaultHierarchy: LocalDateTable_18c6329c-50ec-4b45-bdf2-e662fbcfa5d1.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -124,7 +120,7 @@ table Customers
 		dataType: int64
 		formatString: 0
 		lineageTag: d1769391-634a-4060-8af1-45941ae6b28e
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: total_children
 
 		annotation SummarizationSetBy = Automatic
@@ -133,7 +129,7 @@ table Customers
 		dataType: int64
 		formatString: 0
 		lineageTag: c0d0a339-0cf1-40cd-8b56-6e2d21bff78d
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: num_children_at_home
 
 		annotation SummarizationSetBy = Automatic
@@ -152,11 +148,6 @@ table Customers
 		lineageTag: b5ccb274-1ca0-43f5-bdab-c62a91f66679
 		summarizeBy: none
 		sourceColumn: acct_open_date
-
-		variation Variation
-			isDefault
-			relationship: f14042aa-e16c-4ef4-b34d-0c119a2b7f9f
-			defaultHierarchy: LocalDateTable_39667004-7365-4c03-baba-3e07fcefd563.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -215,7 +206,7 @@ table Customers
 	column 'Current Age' = DATEDIFF(Customers[birthdate], TODAY(), YEAR)
 		formatString: 0
 		lineageTag: 43879936-c32f-4ab9-ad2b-a3486c657aa4
-		summarizeBy: sum
+		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 

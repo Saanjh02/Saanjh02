@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "429a0a30b0e2003ee4b0",
   "position": {
-    "x": 622.02247191011236,
-    "y": 174.9812734082397,
+    "x": 598.75,
+    "y": 175,
     "z": 5000,
-    "height": 279.250936329588,
-    "width": 393.10861423220973,
+    "height": 278.75,
+    "width": 421.25,
     "tabOrder": 5000
   },
   "visual": {
@@ -23,14 +23,17 @@
                       "Entity": "Stores"
                     }
                   },
-                  "Property": "store_city"
+                  "Property": "store_name"
                 }
               },
-              "queryRef": "Stores.store_city",
-              "nativeQueryRef": "store_city",
+              "queryRef": "Stores.store_name",
+              "nativeQueryRef": "store_name",
               "active": true
             }
           ]
+        },
+        "Series": {
+          "projections": []
         },
         "Size": {
           "projections": [
@@ -49,6 +52,52 @@
               "nativeQueryRef": "Total Transactions"
             }
           ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Stores"
+                        }
+                      },
+                      "Property": "Longitude"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(Stores.Longitude)",
+              "nativeQueryRef": "Average of Longitude"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Stores"
+                        }
+                      },
+                      "Property": "Latitude"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(Stores.Latitude)",
+              "nativeQueryRef": "Average of Latitude"
+            }
+          ]
         }
       }
     },
@@ -59,7 +108,14 @@
             "bubbleSize": {
               "expr": {
                 "Literal": {
-                  "Value": "-4L"
+                  "Value": "-12L"
+                }
+              }
+            },
+            "markerRangeType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'auto'"
                 }
               }
             }
@@ -100,5 +156,75 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "43a527ecd3f3e2310b57",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Transaction_Data"
+              }
+            },
+            "Property": "Total Transactions"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b081ea9b7a7c2710edc9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Stores"
+              }
+            },
+            "Property": "store_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "de33deed8ca3d991390b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Stores"
+                  }
+                },
+                "Property": "Latitude"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ae1b765f491a9d9d9f90",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Stores"
+                  }
+                },
+                "Property": "Longitude"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

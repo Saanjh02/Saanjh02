@@ -1,33 +1,3 @@
-relationship dce45a7a-0b63-467f-97f1-678aba277689
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Customers.birthdate
-	toColumn: LocalDateTable_18c6329c-50ec-4b45-bdf2-e662fbcfa5d1.Date
-
-relationship f14042aa-e16c-4ef4-b34d-0c119a2b7f9f
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Customers.acct_open_date
-	toColumn: LocalDateTable_39667004-7365-4c03-baba-3e07fcefd563.Date
-
-relationship 5ec1fa1a-59cd-4773-a883-6bb73b99d9e3
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Stores.first_opened_date
-	toColumn: LocalDateTable_3f129bb8-2333-42e8-8518-49a246503d5c.Date
-
-relationship d2640aa4-14d8-493c-a463-4ae3847d2bf4
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Stores.last_remodel_date
-	toColumn: LocalDateTable_0b939621-b441-4b14-bb62-2c638babb845.Date
-
-relationship 65569a0d-a179-4349-a7b1-7477badf8794
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Calendar.date
-	toColumn: LocalDateTable_48f76236-4f75-47d1-856a-2c85eae22c04.Date
-
-relationship 014661e5-374b-4d7e-b370-381604147743
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Calendar.'Start of Month'
-	toColumn: LocalDateTable_7c40627f-53c3-4a14-8e41-803cef96e4d1.Date
-
 relationship 52286cef-3a50-b3c8-46b7-a401ccd57717
 	fromColumn: Transaction_Data.customer_id
 	toColumn: Customers.customer_id
@@ -64,14 +34,4 @@ relationship fa7fa2fa-8bc4-bea4-eb28-ef7b9032c466
 relationship 2d9c51a8-66ae-45e4-177f-65879d83921b
 	fromColumn: Stores.region_id
 	toColumn: Regions.region_id
-
-relationship 4adc3799-e112-46cd-a503-8f4a21b1f576
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Calendar.'End of Month'
-	toColumn: LocalDateTable_e27d7dcd-844f-42aa-8526-26ce2e6c4271.Date
-
-relationship 2c0b120c-2e53-4a4f-84fe-d03da489adb5
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Calendar.'Start Of Week'
-	toColumn: LocalDateTable_cfca3284-4edc-4c66-8e4c-2aeaa93b1f2e.Date
 

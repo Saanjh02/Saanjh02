@@ -4,6 +4,7 @@ table Regions
 
 	column region_id
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: c47145d5-df0e-407b-a36f-e489f2377076
 		summarizeBy: none
