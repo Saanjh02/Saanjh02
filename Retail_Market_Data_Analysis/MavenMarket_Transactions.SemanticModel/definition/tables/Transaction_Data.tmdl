@@ -139,6 +139,12 @@ table Transaction_Data
 		displayFolder: Revenue & Profit
 		lineageTag: fc20b301-df4e-489c-8637-fa86871f4c94
 
+	/// Average revenue per transaction.
+	measure 'Avg Revenue per Transaction' = DIVIDE([Total Revenue], [Total Transactions])
+		formatString: \$#,0.00
+		displayFolder: Revenue & Profit
+		lineageTag: 62634200-8188-4394-a3e6-011fbc1363f7
+
 	column transaction_date
 		dataType: dateTime
 		formatString: m/d/yyyy

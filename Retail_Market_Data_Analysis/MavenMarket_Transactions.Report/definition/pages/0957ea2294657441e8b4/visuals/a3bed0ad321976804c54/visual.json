@@ -698,62 +698,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "9762b0636c5961e09579",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Transaction_Data"
-              }
-            },
-            "Property": "Total Transactions"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "e39e4c320dcdb3080d59",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Transaction_Data"
-              }
-            },
-            "Property": "Total Profit"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "cc0c200f5c75a2a41068",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Transaction_Data"
-              }
-            },
-            "Property": "Profit Margin"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f8b00bb82e6c0d1e1a55",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Transaction_Data"
-              }
-            },
-            "Property": "Return Rate"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

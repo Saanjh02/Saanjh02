@@ -144,51 +144,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "1cb3134a360d2ca77374",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Return_Data"
-              }
-            },
-            "Property": "Last Month Returns"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "5f903fc01000a35a6099",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Return_Data"
-              }
-            },
-            "Property": "Total Returns"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ae5d01e5070a66221038",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Calendar"
-              }
-            },
-            "Property": "Start of Month"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

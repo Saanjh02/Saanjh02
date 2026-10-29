@@ -41,6 +41,12 @@ table Return_Data
 		displayFolder: Returns
 		lineageTag: a211c2cf-1310-4c2e-8e86-6da7a6c34a5a
 
+	/// Cost of returned units: quantity returned times product cost.
+	measure 'Return Cost' = SUMX(Return_Data, Return_Data[quantity] * RELATED(Products[product_cost]))
+		formatString: \$#,0.00
+		displayFolder: Returns
+		lineageTag: 1c5097f1-5738-4791-bea4-c8fc06293f71
+
 	column return_date
 		dataType: dateTime
 		formatString: m/d/yyyy

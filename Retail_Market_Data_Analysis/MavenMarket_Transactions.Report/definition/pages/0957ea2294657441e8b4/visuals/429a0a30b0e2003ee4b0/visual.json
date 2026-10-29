@@ -32,9 +32,6 @@
             }
           ]
         },
-        "Series": {
-          "projections": []
-        },
         "Size": {
           "projections": [
             {
@@ -156,75 +153,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "43a527ecd3f3e2310b57",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Transaction_Data"
-              }
-            },
-            "Property": "Total Transactions"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b081ea9b7a7c2710edc9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Stores"
-              }
-            },
-            "Property": "store_name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "de33deed8ca3d991390b",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Stores"
-                  }
-                },
-                "Property": "Latitude"
-              }
-            },
-            "Function": 1
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ae1b765f491a9d9d9f90",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Stores"
-                  }
-                },
-                "Property": "Longitude"
-              }
-            },
-            "Function": 1
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

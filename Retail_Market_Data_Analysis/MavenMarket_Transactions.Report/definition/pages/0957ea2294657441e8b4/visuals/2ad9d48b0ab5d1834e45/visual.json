@@ -4,10 +4,10 @@
   "position": {
     "x": 1020,
     "y": 360,
-    "z": 9001,
+    "z": 10000,
     "height": 93.75,
     "width": 236.25,
-    "tabOrder": 9001
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "slicer",
@@ -178,23 +178,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "e2f54f32bd49061883a1",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Calendar"
-              }
-            },
-            "Property": "Year"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }
