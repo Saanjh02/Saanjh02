@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["dim_customers","dim_date","dim_products","dim_sellers","fct_order_items","fct_orders","_Measures","Measures_"]
+
+annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
+
+ref table dim_customers
+ref table dim_date
+ref table dim_products
+ref table dim_sellers
+ref table fct_order_items
+ref table fct_orders
+ref table Measures_
+
+ref cultureInfo en-US
+

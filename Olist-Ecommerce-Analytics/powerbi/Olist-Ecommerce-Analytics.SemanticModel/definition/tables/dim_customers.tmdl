@@ -1,0 +1,82 @@
+table dim_customers
+	lineageTag: a62afb6d-da3a-4621-b212-8cca26f3a85d
+
+	measure 'Repeat Customers' = ```
+			CALCULATE(DISTINCTCOUNT(dim_customers[customer_unique_id]),
+			                   dim_customers[is_repeat_customer] = TRUE
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 3ef53db0-0bef-4408-a91c-9f0a7e0bf926
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: 24ea804f-fced-40c6-90cf-0aa378ab77bf
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 71086167-b131-46b0-800d-a98c18002e30
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: a2d9c98f-7a19-443c-8f18-446e82c042d0
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_order_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d5541923-cfad-4861-8a33-03690ac5c516
+		summarizeBy: none
+		sourceColumn: first_order_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: f8864d27-5117-40e9-85ee-72cf7e29bf47
+		summarizeBy: sum
+		sourceColumn: total_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_repeat_customer
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 42740ce0-59c3-4709-906b-f70cfb34687f
+		summarizeBy: none
+		sourceColumn: is_repeat_customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_type = IF(dim_customers[is_repeat_customer], "Repeat", "One-time")
+		dataType: string
+		lineageTag: 89c60874-02c4-4656-964a-295a27b7d3a5
+
+	partition dim_customers = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"moonlit-caster-514219-k0_Database" = Source{[Name="moonlit-caster-514219-k0",Kind="Database"]}[Data],
+				    dbt_dev_Schema = #"moonlit-caster-514219-k0_Database"{[Name="dbt_dev",Kind="Schema"]}[Data],
+				    dim_customers_Table = dbt_dev_Schema{[Name="dim_customers",Kind="Table"]}[Data]
+				in
+				    dim_customers_Table
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,97 @@
+table dim_date
+	lineageTag: 9f2f313b-781c-458f-a5c2-b5bb5fc5b314
+	dataCategory: Time
+
+	column date_day
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 5526f560-bd91-4dd7-88a4-80267f9eecf8
+		summarizeBy: none
+		sourceColumn: date_day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 415c3932-253b-47e0-ab34-d3fc3eebc78c
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 3dfd0bd0-bb18-4d25-9a5b-36c76c02bf4c
+		summarizeBy: sum
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 575392fb-054c-4eb7-88a0-9dac4a64481a
+		summarizeBy: sum
+		sourceColumn: month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 6af58bb2-2017-4399-95ab-477d61e9c659
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: cc564d18-43f4-452c-ba25-2ec9de9de03e
+		summarizeBy: none
+		sourceColumn: year_month
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_name
+		dataType: string
+		lineageTag: f31f305a-6298-4288-b67b-fd6c1d7eea79
+		summarizeBy: none
+		sourceColumn: day_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ab15b1a4-3e53-4b41-a43c-a742220a587a
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_short = LEFT(dim_date[month_name], 3)
+		dataType: string
+		lineageTag: 966dd176-6046-4eaa-9535-d5b60315d132
+		sortByColumn: month_number
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"moonlit-caster-514219-k0_Database" = Source{[Name="moonlit-caster-514219-k0",Kind="Database"]}[Data],
+				    dbt_dev_Schema = #"moonlit-caster-514219-k0_Database"{[Name="dbt_dev",Kind="Schema"]}[Data],
+				    dim_date_Table = dbt_dev_Schema{[Name="dim_date",Kind="Table"]}[Data]
+				in
+				    dim_date_Table
+
+	annotation PBI_ResultType = Table
+

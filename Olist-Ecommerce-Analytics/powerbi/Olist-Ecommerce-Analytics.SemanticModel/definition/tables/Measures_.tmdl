@@ -1,0 +1,192 @@
+table Measures_
+	lineageTag: 8e598fea-92e2-427e-b66d-517eb717a650
+
+	measure 'Total Orders' = DISTINCTCOUNT(fct_orders[order_id])
+		formatString: #,0
+		displayFolder: 2 Orders
+		lineageTag: 05bc1222-b654-4ea8-9af0-f1b049e45c80
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Delivered Orders' =
+			
+			CALCULATE(
+			    [Total Orders],
+			    FILTER(fct_orders, NOT ISBLANK(fct_orders[is_late]))
+			)
+		formatString: #,0
+		displayFolder: 2 Orders
+		lineageTag: 517ae734-b23f-4de0-83ba-2027c09dd7f3
+
+	measure 'Late Orders' =
+			
+			CALCULATE([Total Orders], fct_orders[is_late] = TRUE)
+		formatString: #,0
+		displayFolder: 3 Delivery
+		lineageTag: d758965d-6a31-4d3b-ba0a-5d54e13fa593
+
+	measure 'Late Delivery %' = DIVIDE([Late Orders], [Delivered Orders])
+		formatString: 0%;-0%;0%
+		displayFolder: 3 Delivery
+		lineageTag: 9baca09d-0037-4686-84cf-f853838cdb9c
+
+	measure 'Avg Delivery Days' = AVERAGE(fct_orders[delivery_days])
+		formatString: 0.0
+		displayFolder: 3 Delivery
+		lineageTag: 8eae52f6-6678-42d8-9609-e57527c9ad1a
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Avg Review Score' = AVERAGE(fct_orders[review_score])
+		formatString: 0.00
+		displayFolder: 4 Reviews
+		lineageTag: 8818e3d6-5e39-4c0e-838a-956aafc62501
+
+	measure 'Total Revenue' =
+			
+			CALCULATE(
+			    SUM(fct_order_items[price]),
+			    fct_order_items[order_status] = "delivered"
+			)
+		formatString: "R$"#,0
+		displayFolder: 1 Revenue
+		lineageTag: cc998fb5-b672-4031-a142-90e800aa7c59
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Avg Order Value' =
+			DIVIDE(
+			    [Total Revenue],
+			    CALCULATE(
+			        DISTINCTCOUNT(fct_order_items[order_id]),
+			        fct_order_items[order_status] = "delivered"
+			    )
+			)
+		formatString: "R$"#,0.00
+		displayFolder: 1 Revenue
+		lineageTag: bc2412fe-a17c-4228-bf3c-d5ac097d2344
+
+	measure 'Repeat Customer %' =
+			DIVIDE(
+			   [Repeat Customers],
+			    DISTINCTCOUNT(dim_customers[customer_unique_id])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 5 Customers
+		lineageTag: ab96a4c2-5023-4567-84c5-fdd9148edb91
+
+	measure 'Revenue LY' =
+			CALCULATE(
+			    [Total Revenue],
+			    SAMEPERIODLASTYEAR(dim_date[date_day])
+			)
+		formatString: "R$"#,0
+		displayFolder: 6 Time Comparison
+		lineageTag: 30340a88-f86c-46c1-845d-7fe198945d17
+
+	measure 'Revenue YoY %' =
+			DIVIDE(
+			    [Total Revenue] - [Revenue LY],
+			    [Revenue LY]
+			)
+		formatString: 0.0%
+		displayFolder: 6 Time Comparison
+		lineageTag: 9c34db0c-6666-48f2-86c7-2dd7f82abc1a
+
+	measure 'On-Time Delivery %' = DIVIDE([Delivered Orders] - [Late Orders], [Delivered Orders])
+		formatString: 0.0%
+		displayFolder: 3 Delivery
+		lineageTag: 16cc547f-af56-42a1-b77e-248a9a8614e8
+
+	measure 'Avg Review (Late)' =
+			CALCULATE(
+			    [Avg Review Score],
+			    FILTER(fct_orders, fct_orders[is_late] = TRUE)
+			)
+		formatString: 0.00
+		displayFolder: 4 Reviews
+		lineageTag: 5457ffda-a0bf-474e-bb42-e37cc937b732
+
+	measure 'Avg Review (On-Time)' =
+			CALCULATE(
+			    [Avg Review Score],
+			    FILTER(fct_orders, NOT ISBLANK(fct_orders[is_late]) && fct_orders[is_late] = FALSE)
+			)
+		formatString: 0.00
+		displayFolder: 4 Reviews
+		lineageTag: a1066864-cc00-459f-8842-ec5eb66d54c0
+
+	measure 'Review Score Gap' = [Avg Review (On-Time)] - [Avg Review (Late)]
+		formatString: 0.00
+		displayFolder: 4 Reviews
+		lineageTag: 4fb7a02d-2e28-4d14-9a51-4b19c5caeb08
+
+	measure 'Share of All Late Orders' =
+			DIVIDE(
+			    [Late Orders],
+			    CALCULATE([Late Orders], ALL(dim_customers))
+			)
+		formatString: 0.0%
+		displayFolder: 3 Delivery
+		lineageTag: d65e79cd-9cab-4823-a288-3c1d9522134e
+
+	measure 'Revenue % of Total' =
+			DIVIDE(
+			    [Total Revenue],
+			    CALCULATE([Total Revenue], ALL(dim_products))
+			)
+		formatString: 0.0%
+		displayFolder: 1 Revenue
+		lineageTag: bab08b46-889a-4936-b006-b6ffd17cbb28
+
+	measure 'Total Customers' = DISTINCTCOUNT(dim_customers[customer_unique_id])
+		formatString: #,0
+		displayFolder: 5 Customers
+		lineageTag: 652b8e47-9203-477d-b2a4-6f6a8871fe08
+
+	measure 'Late Orders (Item Grain)' =
+			CALCULATE(
+			    DISTINCTCOUNT(fct_order_items[order_id]),
+			    fct_order_items[is_late] = TRUE
+			)
+		formatString: #,0
+		displayFolder: 7 Item Grain (category and seller views)
+		lineageTag: 81f697f4-c760-4c7d-a17c-8c84a7a5db01
+
+	measure 'Delivered Orders (Item Grain)' =
+			CALCULATE(
+			    DISTINCTCOUNT(fct_order_items[order_id]),
+			    FILTER(fct_order_items, NOT ISBLANK(fct_order_items[is_late]))
+			)
+		formatString: #,0
+		displayFolder: 7 Item Grain (category and seller views)
+		lineageTag: be45f6f1-b37b-4808-9c62-936461a39873
+
+	measure 'Late % (Item Grain)' = DIVIDE([Late Orders (Item Grain)], [Delivered Orders (Item Grain)])
+		formatString: 0.0%
+		displayFolder: 7 Item Grain (category and seller views)
+		lineageTag: faebf2f1-a57d-46a6-8e26-2fe2e2c0a8d4
+
+	measure 'Selected Category' =
+			
+			SELECTEDVALUE(
+			    dim_products[category],
+			    "All categories"
+			)
+		displayFolder: 5 Customers
+		lineageTag: a2151bde-bb16-419e-9bf3-b53aa200e26a
+
+	partition Measures_ = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,122 @@
+table fct_order_items
+	lineageTag: d469a7fa-2648-423a-8f5b-53ed7c8575f3
+
+	column order_item_key
+		dataType: string
+		lineageTag: 591e65b5-885f-45ef-bd90-196f74ab7df8
+		summarizeBy: none
+		sourceColumn: order_item_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: c30d3dc2-cf89-4044-815d-60d5a5468d50
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_item_id
+		dataType: int64
+		formatString: 0
+		lineageTag: bf07895a-5b8f-40ab-85e5-c2bfb088e0cc
+		summarizeBy: sum
+		sourceColumn: order_item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 0e90e6d3-b67b-4646-9c04-671616683d8b
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_id
+		dataType: string
+		lineageTag: db68163f-1e3d-4162-8b3b-350dc3a9a565
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: 8cd0b3b9-015e-49c7-a556-647a1020c7aa
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f6e2dcfe-f742-4e2d-a13b-626e3f60622e
+		summarizeBy: none
+		sourceColumn: purchase_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column order_status
+		dataType: string
+		lineageTag: 90463111-f684-44bd-8166-c43238cde865
+		summarizeBy: none
+		sourceColumn: order_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_late
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ee15c6fb-0869-487c-802f-c41ad3e8d679
+		summarizeBy: none
+		sourceColumn: is_late
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 6bc6f221-efe4-49d7-8d5a-bba5c1a62960
+		summarizeBy: sum
+		sourceColumn: delivery_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		lineageTag: ef80fc8f-81d2-4b5f-bcf1-e33fb388eaae
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column freight_value
+		dataType: double
+		lineageTag: b74f8392-f16a-4302-9487-62ff19d25234
+		summarizeBy: sum
+		sourceColumn: freight_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fct_order_items = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"moonlit-caster-514219-k0_Database" = Source{[Name="moonlit-caster-514219-k0",Kind="Database"]}[Data],
+				    dbt_dev_Schema = #"moonlit-caster-514219-k0_Database"{[Name="dbt_dev",Kind="Schema"]}[Data],
+				    fct_order_items_Table = dbt_dev_Schema{[Name="fct_order_items",Kind="Table"]}[Data]
+				in
+				    fct_order_items_Table
+
+	annotation PBI_ResultType = Table
+

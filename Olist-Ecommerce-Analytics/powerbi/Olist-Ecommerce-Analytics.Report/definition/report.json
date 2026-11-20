@@ -1,0 +1,246 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY26SU07",
+      "reportVersionAtImport": {
+        "visual": "2.11.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "55cf39768dec600c7dc8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_date"
+              }
+            },
+            "Property": "date_day"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "dim_date",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "And": {
+                  "Left": {
+                    "Comparison": {
+                      "ComparisonKind": 2,
+                      "Left": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "d"
+                            }
+                          },
+                          "Property": "date_day"
+                        }
+                      },
+                      "Right": {
+                        "DateSpan": {
+                          "Expression": {
+                            "Literal": {
+                              "Value": "datetime'2017-01-01T00:00:00'"
+                            }
+                          },
+                          "TimeUnit": 5
+                        }
+                      }
+                    }
+                  },
+                  "Right": {
+                    "Comparison": {
+                      "ComparisonKind": 3,
+                      "Left": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "d"
+                            }
+                          },
+                          "Property": "date_day"
+                        }
+                      },
+                      "Right": {
+                        "DateSpan": {
+                          "Expression": {
+                            "Literal": {
+                              "Value": "datetime'2018-09-01T00:00:00'"
+                            }
+                          },
+                          "TimeUnit": 5
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      }
+    ]
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY26SU07",
+          "path": "BaseThemes/CY26SU07.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "01_shopping_cart_total_revenue5711226921146917.png",
+          "path": "01_shopping_cart_total_revenue5711226921146917.png",
+          "type": "Image"
+        },
+        {
+          "name": "01_shopping_cart_total_revenue7339687368812174.png",
+          "path": "01_shopping_cart_total_revenue7339687368812174.png",
+          "type": "Image"
+        },
+        {
+          "name": "02_package_total_orders7592518292153615.png",
+          "path": "02_package_total_orders7592518292153615.png",
+          "type": "Image"
+        },
+        {
+          "name": "02_package_total_orders7862886943764964.png",
+          "path": "02_package_total_orders7862886943764964.png",
+          "type": "Image"
+        },
+        {
+          "name": "03_receipt_avg_order_value3485191757150139.png",
+          "path": "03_receipt_avg_order_value3485191757150139.png",
+          "type": "Image"
+        },
+        {
+          "name": "03_receipt_avg_order_value758657330323529.png",
+          "path": "03_receipt_avg_order_value758657330323529.png",
+          "type": "Image"
+        },
+        {
+          "name": "04_star_avg_review_score5079400504944225.png",
+          "path": "04_star_avg_review_score5079400504944225.png",
+          "type": "Image"
+        },
+        {
+          "name": "04_star_avg_review_score9575314975759271.png",
+          "path": "04_star_avg_review_score9575314975759271.png",
+          "type": "Image"
+        },
+        {
+          "name": "05_delivery_truck_late_deliver13941627290296077.png",
+          "path": "05_delivery_truck_late_deliver13941627290296077.png",
+          "type": "Image"
+        },
+        {
+          "name": "05_delivery_truck_late_deliver25976785963519855.png",
+          "path": "05_delivery_truck_late_deliver25976785963519855.png",
+          "type": "Image"
+        },
+        {
+          "name": "05_delivery_truck_late_deliver30660294997041004.png",
+          "path": "05_delivery_truck_late_deliver30660294997041004.png",
+          "type": "Image"
+        },
+        {
+          "name": "07_customers_total_repeat_cust3770502449762554.png",
+          "path": "07_customers_total_repeat_cust3770502449762554.png",
+          "type": "Image"
+        },
+        {
+          "name": "07_customers_total_repeat_cust7373838638944296.png",
+          "path": "07_customers_total_repeat_cust7373838638944296.png",
+          "type": "Image"
+        },
+        {
+          "name": "09_clock_avg_delivery_days6701370027021034.png",
+          "path": "09_clock_avg_delivery_days6701370027021034.png",
+          "type": "Image"
+        },
+        {
+          "name": "10_pie_chart_customer_mix44929668534265155.png",
+          "path": "10_pie_chart_customer_mix44929668534265155.png",
+          "type": "Image"
+        },
+        {
+          "name": "Olist_E-commerce_Analytics_Das6148355568041879.png",
+          "path": "Olist_E-commerce_Analytics_Das6148355568041879.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true,
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
+  }
+}

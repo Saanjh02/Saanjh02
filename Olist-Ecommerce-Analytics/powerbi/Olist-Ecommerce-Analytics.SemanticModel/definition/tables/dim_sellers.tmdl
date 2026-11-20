@@ -1,0 +1,40 @@
+table dim_sellers
+	lineageTag: 264c0bc7-daa3-43ea-8d2f-5837d95765cb
+
+	column seller_id
+		dataType: string
+		lineageTag: 03faca1f-7875-460c-9e5d-4fd43b648760
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 31dbc8b7-894c-4859-bc5a-e13060c8568b
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: fcc00ab6-6fb8-43ad-8297-72067eb2a222
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_sellers = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"moonlit-caster-514219-k0_Database" = Source{[Name="moonlit-caster-514219-k0",Kind="Database"]}[Data],
+				    dbt_dev_Schema = #"moonlit-caster-514219-k0_Database"{[Name="dbt_dev",Kind="Schema"]}[Data],
+				    dim_sellers_Table = dbt_dev_Schema{[Name="dim_sellers",Kind="Table"]}[Data]
+				in
+				    dim_sellers_Table
+
+	annotation PBI_ResultType = Table
+
