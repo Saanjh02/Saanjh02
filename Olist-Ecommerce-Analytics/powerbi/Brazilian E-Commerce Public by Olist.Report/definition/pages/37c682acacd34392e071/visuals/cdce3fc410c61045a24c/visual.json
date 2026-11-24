@@ -297,7 +297,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Top 10 Product Categories by Revenue'"
+                  "Value": "'Top Categories by Average Order Value'"
                 }
               }
             }
@@ -409,34 +409,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "2bd7cf31800c843ec01d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Avg Order Value"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "01f72171ab86e40b9a01",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Total Revenue"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

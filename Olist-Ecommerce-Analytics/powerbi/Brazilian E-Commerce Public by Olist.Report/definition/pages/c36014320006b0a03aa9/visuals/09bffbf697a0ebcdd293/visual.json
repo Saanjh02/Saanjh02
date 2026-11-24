@@ -4,10 +4,10 @@
   "position": {
     "x": 423.82222222222219,
     "y": 116.62222222222222,
-    "z": 11,
+    "z": 8000,
     "height": 307.2,
     "width": 819.2,
-    "tabOrder": 11
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "tableEx",
@@ -304,20 +304,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "d8cc6df220dd2c6a87cd",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Delivered Orders (Item Grain)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "a38524a614d895e241a0",
         "field": {
           "Column": {
@@ -417,48 +403,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "cb13f544b6285a798012",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_sellers"
-              }
-            },
-            "Property": "state"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "70c212d03078ac4065ab",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Total Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "5110ac43571007c0deb0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Late % (Item Grain)"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

@@ -559,48 +559,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "b5fbb394a7883e657815",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_sellers"
-              }
-            },
-            "Property": "state"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "5dd287b6b08002a90a05",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Total Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "7923906ac8ebd29609bd",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Late % (Item Grain)"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

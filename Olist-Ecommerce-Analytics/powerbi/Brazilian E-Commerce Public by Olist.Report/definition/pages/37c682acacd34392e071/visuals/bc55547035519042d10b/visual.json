@@ -515,48 +515,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "41e0d77ce0384e91023b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Total Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ef4b6b00b754b897657b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Avg Order Value"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "2297bda0600a3185374a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Delivered Orders (Item Grain)"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

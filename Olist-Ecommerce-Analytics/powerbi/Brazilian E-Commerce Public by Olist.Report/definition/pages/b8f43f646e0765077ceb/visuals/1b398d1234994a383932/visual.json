@@ -406,20 +406,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "361bb7a8169176e8469c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_"
-              }
-            },
-            "Property": "Total Revenue"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }
