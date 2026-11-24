@@ -42,9 +42,13 @@ table dim_products
 				    Source = GoogleBigQuery.Database([Implementation="2.0"]),
 				    #"moonlit-caster-514219-k0_Database" = Source{[Name="moonlit-caster-514219-k0",Kind="Database"]}[Data],
 				    dbt_dev_Schema = #"moonlit-caster-514219-k0_Database"{[Name="dbt_dev",Kind="Schema"]}[Data],
-				    dim_products_Table = dbt_dev_Schema{[Name="dim_products",Kind="Table"]}[Data]
+				    dim_products_Table = dbt_dev_Schema{[Name="dim_products",Kind="Table"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(dim_products_Table,"_"," ",Replacer.ReplaceText,{"category"}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Replaced Value",{{"category", Text.Proper, type text}})
 				in
-				    dim_products_Table
+				    #"Capitalized Each Word"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 
