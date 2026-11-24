@@ -23,12 +23,11 @@
                       "Entity": "Measures_"
                     }
                   },
-                  "Property": "Late Delivery %"
+                  "Property": "Late % (Item Grain)"
                 }
               },
-              "queryRef": "Measures_.Late Delivery %",
-              "nativeQueryRef": "Late Delivery %",
-              "format": "0.00%;-0.00%;0.00%"
+              "queryRef": "Measures_.Late % (Item Grain)",
+              "nativeQueryRef": "Late % (Item Grain)"
             }
           ]
         }
@@ -43,7 +42,7 @@
                     "Entity": "Measures_"
                   }
                 },
-                "Property": "Late Delivery %"
+                "Property": "Late % (Item Grain)"
               }
             },
             "direction": "Descending"

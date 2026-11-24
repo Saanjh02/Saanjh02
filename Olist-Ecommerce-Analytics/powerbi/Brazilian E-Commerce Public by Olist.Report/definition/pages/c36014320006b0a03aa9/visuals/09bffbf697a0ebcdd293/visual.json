@@ -403,6 +403,62 @@
             }
           ]
         }
+      },
+      {
+        "name": "1b3debf1b41a90ad11c0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_sellers"
+              }
+            },
+            "Property": "state"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a4f2e1107bcafc06f61f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures_"
+              }
+            },
+            "Property": "Total Revenue"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "98c56edd8e76c3d9f7d4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures_"
+              }
+            },
+            "Property": "Delivered Orders (Item Grain)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fc82f7be6a15027db035",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures_"
+              }
+            },
+            "Property": "Late % (Item Grain)"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

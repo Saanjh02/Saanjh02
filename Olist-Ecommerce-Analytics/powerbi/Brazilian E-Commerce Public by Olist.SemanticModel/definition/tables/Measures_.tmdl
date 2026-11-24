@@ -25,8 +25,14 @@ table Measures_
 		displayFolder: 3 Delivery
 		lineageTag: d758965d-6a31-4d3b-ba0a-5d54e13fa593
 
-	measure 'Late Delivery %' = DIVIDE([Late Orders], [Delivered Orders])
-		formatString: 0%;-0%;0%
+	measure 'Late Delivery %' =
+			VAR Delivered = [Delivered Orders]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( Delivered ),
+			        DIVIDE ( COALESCE ( [Late Orders], 0 ), Delivered )
+			    )
+		formatString: 0.0%
 		displayFolder: 3 Delivery
 		lineageTag: 9baca09d-0037-4686-84cf-f853838cdb9c
 
@@ -162,7 +168,13 @@ table Measures_
 		displayFolder: 7 Item Grain (category and seller views)
 		lineageTag: be45f6f1-b37b-4808-9c62-936461a39873
 
-	measure 'Late % (Item Grain)' = DIVIDE([Late Orders (Item Grain)], [Delivered Orders (Item Grain)])
+	measure 'Late % (Item Grain)' =
+			VAR Delivered = [Delivered Orders (Item Grain)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( Delivered ),
+			        DIVIDE ( COALESCE ( [Late Orders (Item Grain)], 0 ), Delivered )
+			    )
 		formatString: 0.0%
 		displayFolder: 7 Item Grain (category and seller views)
 		lineageTag: faebf2f1-a57d-46a6-8e26-2fe2e2c0a8d4
