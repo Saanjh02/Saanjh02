@@ -75,7 +75,7 @@ Kaggle CSV (9 files)
 | **Marts** (`models/marts`) | `fct_orders`, `fct_order_items`, `dim_customers`, `dim_products`, `dim_sellers`, `dim_date` | Final star schema that Power BI reads |
 
 
-![dbt lineage graph](screenshots/06-lineage-graph.png)
+![dbt lineage graph](screenshots/06-dbt-lineage.png)
 *dbt lineage: 8 staging models feed 3 intermediate models, which build the 6 mart tables that Power BI reads.*
 
 
